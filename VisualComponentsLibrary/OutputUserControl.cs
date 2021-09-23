@@ -63,13 +63,12 @@ namespace VisualComponentsLibrary
 
             foreach (var hierarchyLevel in treeHierarchy)
             {
-                //"Достаём" из переданного объекта значение для данного уровня иерархии
                 string value = GetValue(item, hierarchyLevel);
 
                 TreeNode node;
-                bool isLeaf = treeHierarchy[treeHierarchy.Count - 1] == hierarchyLevel;
+                bool isLeafNode = treeHierarchy[treeHierarchy.Count - 1] == hierarchyLevel;
 
-                if (IsAlreadyInTree(value, parentNode) && !isLeaf)
+                if (!isLeafNode && IsAlreadyInTree(value, parentNode))
                 {
                     if (parentNode != null)
                     {

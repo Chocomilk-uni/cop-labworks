@@ -6,8 +6,8 @@ namespace VisualComponentsLibrary
 {
     public partial class InputUserControl : UserControl
     {
-        public int maxLength = 50;
-        public int minLength = 10;
+        public int? maxLength;
+        public int? minLength;
 
         public InputUserControl()
         {
@@ -20,11 +20,17 @@ namespace VisualComponentsLibrary
             set => textBox.Text = value;
             get
             {
-                if (textBox.TextLength >= minLength && textBox.TextLength <= maxLength)
+                if (minLength.HasValue && maxLength.HasValue)
                 {
-                    return textBox.Text;
+                    if (textBox.TextLength >= minLength && textBox.TextLength <= maxLength)
+                    {
+                        return textBox.Text;
+                    }
+
+                    else throw new ArgumentException("Строка не входит в границы диапазона");
                 }
-                else throw new ArgumentException();
+
+                else throw new ArgumentException("Границы диапазона не установлены");
             }
         }
     }

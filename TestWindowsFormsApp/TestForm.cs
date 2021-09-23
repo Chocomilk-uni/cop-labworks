@@ -10,8 +10,8 @@ namespace TestWindowsFormsApp
         {
             InitializeComponent();
             outputUserControl.SetHierarchy(new List<string> { "Genre", "Author", "Title" });
-            inputUserControl.maxLength = 50;
-            inputUserControl.minLength = 10;
+/*            inputUserControl.maxLength = 50;
+            inputUserControl.minLength = 10;*/
         }
 
         private void ButtonAddItem_Click(object sender, EventArgs e)
@@ -40,11 +40,12 @@ namespace TestWindowsFormsApp
             optionsUserControl.ClearItems();
         }
 
+        [Serializable]
         class Book
         {
-            private string Genre;
-            private string Author;
-            private string Title { get; set; }
+            public string Genre { get; set; }
+            public string Author { get; set; }
+            public string Title { get; set; }
 
             public Book(string genre, string author, string title)
             {
