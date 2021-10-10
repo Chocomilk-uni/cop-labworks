@@ -30,46 +30,75 @@ namespace TestWindowsFormsApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.contextComponent1 = new NonVisualComponentsLibrary.ContextComponent(this.components);
+            this.textBoxTitle = new System.Windows.Forms.TextBox();
+            this.buttonGetDocWithImgs = new System.Windows.Forms.Button();
+            this.contextComponent = new NonVisualComponentsLibrary.ContextComponent(this.components);
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxTitle.Location = new System.Drawing.Point(36, 52);
+            this.textBoxTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxTitle.Name = "textBoxTitle";
+            this.textBoxTitle.Size = new System.Drawing.Size(132, 22);
+            this.textBoxTitle.TabIndex = 0;
             // 
-            // button1
+            // buttonGetDocWithImgs
             // 
-            this.button1.Location = new System.Drawing.Point(132, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonGetDocWithImgs.Location = new System.Drawing.Point(36, 82);
+            this.buttonGetDocWithImgs.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonGetDocWithImgs.Name = "buttonGetDocWithImgs";
+            this.buttonGetDocWithImgs.Size = new System.Drawing.Size(132, 44);
+            this.buttonGetDocWithImgs.TabIndex = 1;
+            this.buttonGetDocWithImgs.Text = "Сгенерировать документ";
+            this.buttonGetDocWithImgs.UseVisualStyleBackColor = true;
+            this.buttonGetDocWithImgs.Click += new System.EventHandler(this.buttonGetDocWithImgs_Click);
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Location = new System.Drawing.Point(33, 31);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(137, 17);
+            this.labelTitle.TabIndex = 2;
+            this.labelTitle.Text = "Введите заголовок:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.labelTitle);
+            this.groupBox1.Controls.Add(this.buttonGetDocWithImgs);
+            this.groupBox1.Controls.Add(this.textBoxTitle);
+            this.groupBox1.Location = new System.Drawing.Point(12, 24);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(206, 156);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Компонент 1";
             // 
             // NonVisualComponentsTestForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 293);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(760, 361);
+            this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NonVisualComponentsTestForm";
             this.Text = "NonVisualComponentsTestForm";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private NonVisualComponentsLibrary.ContextComponent contextComponent1;
+        private System.Windows.Forms.TextBox textBoxTitle;
+        private System.Windows.Forms.Button buttonGetDocWithImgs;
+        private NonVisualComponentsLibrary.ContextComponent contextComponent;
+        private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

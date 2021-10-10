@@ -63,15 +63,19 @@
     <Compile Include="ContextComponent.Designer.cs">
       <DependentUpon>ContextComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperModels\CellPdfTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TableComponent.Designer.cs">
+      <DependentUpon>TableComponent.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enums\" />
-    <Folder Include="HelperModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
