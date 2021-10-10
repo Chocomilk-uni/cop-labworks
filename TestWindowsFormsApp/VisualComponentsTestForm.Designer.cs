@@ -1,7 +1,7 @@
 ﻿
 namespace TestWindowsFormsApp
 {
-    partial class TestForm
+    partial class VisualComponentsTestForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.

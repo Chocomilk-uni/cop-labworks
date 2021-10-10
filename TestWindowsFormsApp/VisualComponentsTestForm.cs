@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace TestWindowsFormsApp
 {
-    public partial class TestForm : Form
+    public partial class VisualComponentsTestForm : Form
     {
-        public TestForm()
+        public VisualComponentsTestForm()
         {
             InitializeComponent();
             outputUserControl.SetHierarchy(new List<string> { "Genre", "Author", "Title" });
