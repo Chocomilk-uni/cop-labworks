@@ -36,17 +36,20 @@ namespace VisualComponentsLibrary
             // 
             this.checkedListBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkedListBox.FormattingEnabled = true;
-            this.checkedListBox.Location = new System.Drawing.Point(0, 0);
+            this.checkedListBox.Location = new System.Drawing.Point(-4, 0);
+            this.checkedListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkedListBox.Name = "checkedListBox";
-            this.checkedListBox.Size = new System.Drawing.Size(140, 89);
+            this.checkedListBox.Size = new System.Drawing.Size(106, 94);
             this.checkedListBox.TabIndex = 0;
             // 
-            // OptionsComponent
+            // OptionsUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.checkedListBox);
-            this.Name = "OptionsComponent";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "OptionsUserControl";
+            this.Size = new System.Drawing.Size(105, 98);
             this.ResumeLayout(false);
 
         }
