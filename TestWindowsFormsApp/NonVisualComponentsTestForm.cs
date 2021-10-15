@@ -125,7 +125,7 @@ namespace TestWindowsFormsApp
                 {
                     Name = "Премия",
                     RowHeight = "1,5cm",
-                    PropertyName = "Prize"
+                    PropertyName = "Bonus"
                 }
             };
             secondColumn = new List<TableCell>
@@ -148,7 +148,7 @@ namespace TestWindowsFormsApp
                 new TableCell()
                 {
                     Name = "Подразделение",
-                    PropertyName = "Subdivision"
+                    PropertyName = "Department"
                 },
                 new TableCell()
                 {
