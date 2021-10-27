@@ -16,9 +16,10 @@ namespace LibraryView
         [STAThread]
         static void Main()
         {
+            var container = BuildUnityContainer();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(container.Resolve<FormMain>());
         }
 
         private static IUnityContainer BuildUnityContainer()

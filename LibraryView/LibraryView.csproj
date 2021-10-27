@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Library_VisualComponents">
+      <HintPath>..\TeamComponents\Library_VisualComponents.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -166,6 +169,9 @@
     <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Container.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsFormsControlLibrary">
+      <HintPath>..\TeamComponents\WindowsFormsControlLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormAuthors.cs">
@@ -228,6 +234,10 @@
     <ProjectReference Include="..\LibraryDatabaseImplement\LibraryDatabaseImplement.csproj">
       <Project>{6afa5222-8b32-4b96-a684-0dae205bcebb}</Project>
       <Name>LibraryDatabaseImplement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisualComponentsLibrary\VisualComponentsLibrary.csproj">
+      <Project>{64BD5535-3690-4895-AFF9-D86BA68CD862}</Project>
+      <Name>VisualComponentsLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
