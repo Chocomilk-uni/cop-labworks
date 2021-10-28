@@ -1,7 +1,9 @@
 ﻿using LibraryBusinessLogic.BindingModels;
 using LibraryBusinessLogic.BusinessLogic;
 using System;
+using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Unity;
@@ -28,6 +30,7 @@ namespace LibraryView
             _checkDataChange = new CheckDataChange();
             inputComponentDate.Pattern = @"^\d{2}\.\d{2}\.\d{1,4}$";
             inputComponentDate.SetToolTip("11.05.1432");
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void FormBook_Load(object sender, EventArgs e)
@@ -48,26 +51,30 @@ namespace LibraryView
                     if (item is null) return;
 
                     textBoxTitle.Text = item.Title;
-                    labelCoverFileName.Text = item.Cover;
+                    labelCoverFileName.Text = Path.GetFileName(item.Cover);
                     optionsUserControl.CheckedItems = new string[] { item.Author };
                     inputComponentDate.Value = item.PublicationDate.ToString("dd.MM.yyyy", CultureInfo.CreateSpecificCulture("de-DE"));
+                    pictureBox.Image = Image.FromFile(Path.GetFullPath(item.Cover));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
 
-            else
+            _checkDataChange.Title = textBoxTitle.Text;
+            _checkDataChange.Cover = labelCoverFileName.Text;
+            if (optionsUserControl.CheckedItems.Count() > 0) 
             {
-                buttonSave.Enabled = false;
-                /*_checkDataChange.Title = textBoxTitle.Text;
-                _checkDataChange.Cover = labelCoverFileName.Text;
                 _checkDataChange.Author = optionsUserControl.CheckedItems[0];
-                _checkDataChange.PublicationDate = DateTime.Parse(inputComponentDate.Value);*/
             }
+            else _checkDataChange.Author = null;
+            if (!string.IsNullOrEmpty(inputComponentDate.Value))
+            {
+                _checkDataChange.PublicationDate = inputComponentDate.Value;
+            }
+            else _checkDataChange.PublicationDate = null;
         }
 
         private void buttonAddCover_Click(object sender, EventArgs e)
@@ -77,19 +84,43 @@ namespace LibraryView
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     coverFileName = ofd.FileName;
+                    pictureBox.Image = Image.FromFile(ofd.FileName);
                 }
             }
 
-            labelCoverFileName.Text = coverFileName;
-            buttonSave.Enabled = true;
+            if (!string.IsNullOrEmpty(coverFileName))
+            {
+                labelCoverFileName.Text = coverFileName;
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             var title = textBoxTitle.Text;
             var cover = labelCoverFileName.Text;
-            var author = optionsUserControl.CheckedItems[0];
-            var date = inputComponent.Value;
+            string author;
+            string date;
+
+            if (optionsUserControl.CheckedItems.Count() > 0)
+            {
+                author = optionsUserControl.CheckedItems[0];
+            }
+            else author = null;
+
+            try
+            {
+                if (!string.IsNullOrEmpty(inputComponentDate.Value))
+                {
+                    date = inputComponentDate.Value;
+                }
+                else date = null;
+            }
+            catch (Exception ex)
+            {
+                date = null;
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
             if (string.IsNullOrEmpty(title))
             {
@@ -112,7 +143,7 @@ namespace LibraryView
                 return;
             }
 
-            if (_checkDataChange.CheckData(title, cover, author, DateTime.Parse(date)))
+            if (_checkDataChange.CheckData(title, cover, author, date))
             {
                 Close();
                 return;
@@ -140,6 +171,7 @@ namespace LibraryView
             DialogResult = DialogResult.OK;
             Close();
         }
+
         private void Exit(object sender, EventArgs e)
         {
             Close();
@@ -151,13 +183,32 @@ namespace LibraryView
             if (Save) return result;
             var title = textBoxTitle.Text;
             var cover = labelCoverFileName.Text;
-            var author = optionsUserControl.CheckedItems[0];
-            var date = inputComponent.Value;
+            string author;
+            string date;
 
-            if (!_checkDataChange.CheckData(title, cover, author, DateTime.Parse(date)))
+            if (optionsUserControl.CheckedItems.Count() > 0)
             {
-                if (MessageBox.Show("Данные не сохранены", "Выйти?", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) != DialogResult.Yes)
+                author = optionsUserControl.CheckedItems[0];
+            }
+            else author = null;
+
+            try
+            {
+                if (!string.IsNullOrEmpty(inputComponentDate.Value))
+                {
+                    date = inputComponentDate.Value;
+                }
+                else date = null;
+            }
+            catch (Exception ex)
+            {
+                date = null;
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (!_checkDataChange.CheckData(title, cover, author, date))
+            {
+                if (MessageBox.Show("Данные не сохранены", "Выйти?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 {
                     result = false;
                 }
@@ -174,19 +225,20 @@ namespace LibraryView
                 return;
             }
         }
+
         public class CheckDataChange
         {
             public string Title { get; set; }
             public string Cover { get; set; }
             public string Author { get; set; }
-            public DateTime PublicationDate { get; set; }
+            public string PublicationDate { get; set; }
 
-            public bool CheckData(string title, string cover, string author, DateTime date)
+            public bool CheckData(string title, string cover, string author, string date)
             {
                 return title.Equals(Title)
                     && cover.Equals(Cover)
                     && author.Equals(Author)
-                    && PublicationDate.Equals(date);
+                    && date.Equals(PublicationDate);
             }
         }
     }

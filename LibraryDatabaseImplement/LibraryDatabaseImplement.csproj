@@ -162,9 +162,9 @@
     <Compile Include="Implementations\AuthorStorage.cs" />
     <Compile Include="Implementations\BookStorage.cs" />
     <Compile Include="LibraryDatabase.cs" />
-    <Compile Include="Migrations\20211026061808_InitialCreate.cs" />
-    <Compile Include="Migrations\20211026061808_InitialCreate.designer.cs">
-      <DependentUpon>20211026061808_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\20211028063152_InitialCreate.cs" />
+    <Compile Include="Migrations\20211028063152_InitialCreate.designer.cs">
+      <DependentUpon>20211028063152_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LibraryDatabaseModelSnapshot.cs" />
     <Compile Include="Models\Author.cs" />

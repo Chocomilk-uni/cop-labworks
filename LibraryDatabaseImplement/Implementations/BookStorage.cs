@@ -36,8 +36,7 @@ namespace LibraryDatabaseImplement.Implementations
             using (var context = new LibraryDatabase())
             {
                 return context.Books
-                .Where(rec => rec.Title.Equals(model.Title)
-                    || model.DateFrom.HasValue && model.DateTo.HasValue && rec.PublicationDate.Date >= model.DateFrom.Value.Date && rec.PublicationDate.Date <= model.DateTo.Value.Date)
+                .Where(rec => rec.Author.Equals(model.Author))
                 .Select(rec => new BookViewModel
                 {
                                         Id = rec.Id,

@@ -18,7 +18,7 @@ namespace LibraryView
             InitializeComponent();
         }
 
-        private void FormOrganizationTypes_Load(object sender, EventArgs e)
+        private void FormAuthors_Load(object sender, EventArgs e)
         {
             LoadData();
         }

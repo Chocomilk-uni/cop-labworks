@@ -45,6 +45,8 @@
     <Compile Include="BindingModels\BookBindingModel.cs" />
     <Compile Include="BusinessLogic\AuthorLogic.cs" />
     <Compile Include="BusinessLogic\BookLogic.cs" />
+    <Compile Include="BusinessLogic\HelperModels\BooksCountChartData.cs" />
+    <Compile Include="BusinessLogic\HelperModels\BooksTableData.cs" />
     <Compile Include="BusinessLogic\ReportLogic.cs" />
     <Compile Include="Interfaces\IAuthorStorage.cs" />
     <Compile Include="Interfaces\IBookStorage.cs" />
@@ -52,8 +54,6 @@
     <Compile Include="ViewModels\AuthorViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HelperModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
