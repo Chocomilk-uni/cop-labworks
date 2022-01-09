@@ -10,8 +10,8 @@ namespace TestWindowsFormsApp
         {
             InitializeComponent();
             outputUserControl.SetHierarchy(new List<string> { "Genre", "Author", "Title" });
-/*            inputUserControl.maxLength = 50;
-            inputUserControl.minLength = 10;*/
+            inputUserControl.maxLength = 50;
+            inputUserControl.minLength = 10;
         }
 
         private void ButtonAddItem_Click(object sender, EventArgs e)
@@ -64,7 +64,14 @@ namespace TestWindowsFormsApp
 
         private void ButtonGetText_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(inputUserControl.InputText);
+            try
+            {
+                MessageBox.Show(inputUserControl.InputText);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ButtonSetText_Clic(object sender, EventArgs e)
